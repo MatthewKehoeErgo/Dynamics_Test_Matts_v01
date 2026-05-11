@@ -177,42 +177,83 @@
   background: #faf9f8;
 }
 
-/* Command bar */
+/* Command bar — list view actions (Dynamics ribbon-style) */
 .dynamics-commandbar {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-between;
-  gap: 12px;
-  padding: 4px 12px;
+  gap: 8px;
+  padding: 2px 8px 2px 4px;
   background: #ffffff;
   border-bottom: 1px solid #edebe9;
   flex-shrink: 0;
 }
 
-.dynamics-commandbar__left {
+.dynamics-commandbar__scroll {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 2px;
+  gap: 0;
+  flex: 1;
+  min-width: 0;
+}
+
+.dynamics-commandbar__right {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding-left: 8px;
+  border-left: 1px solid #edebe9;
 }
 
 /* Fluent subtle buttons — tighter Dynamics density */
 .dynamics-commandbar .fui-Button {
-  min-height: 30px;
-  padding-left: 8px;
-  padding-right: 10px;
+  min-height: 28px;
+  padding-left: 6px;
+  padding-right: 8px;
   font-size: 12px;
   font-weight: 400;
   color: #323130;
 }
 
-.dynamics-commandbar .fui-Button svg {
-  width: 16px;
-  height: 16px;
-}
-
 .dynamics-commandbar .fui-Button:hover {
   background: #f3f2f1 !important;
+}
+
+.dynamics-cmd-btn__inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.dynamics-cmd-btn__icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: #605e5c;
+}
+
+.dynamics-cmd-btn__chevron {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  margin-left: -2px;
+  color: #605e5c;
+  opacity: 0.85;
+}
+
+/* View toolbar — Edit columns / filters with icons */
+.dynamics-view-toolbar__link--icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dynamics-view-toolbar__link-icon {
+  width: 16px;
+  height: 16px;
+  color: #0078d4;
 }
 
 /* --- View region --- */

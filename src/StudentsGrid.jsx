@@ -15,13 +15,25 @@ import {
 import {
   AddRegular,
   ArrowClockwiseRegular,
+  ArrowExportRegular,
+  ArrowImportRegular,
   BookContactsRegular,
+  ChevronDownRegular,
+  ColumnTripleEditRegular,
+  DataBarVerticalRegular,
+  DataPieRegular,
   DeleteRegular,
+  DocumentBulletListRegular,
   DocumentRegular,
+  FilterRegular,
+  FlowRegular,
   GridRegular,
+  LinkRegular,
   PeopleRegular,
   SearchRegular,
   SettingsRegular,
+  ShareRegular,
+  TableRegular,
 } from "@fluentui/react-icons";
 import "./StudentsGrid.css";
 
@@ -194,30 +206,102 @@ export default function StudentsGrid({ students, onOpenStudent, onOpenApplicatio
 
         <main className="dynamics-main">
           <div className="dynamics-commandbar" role="toolbar" aria-label="Commands">
-            <div className="dynamics-commandbar__left">
+            <div className="dynamics-commandbar__scroll">
               <Button
                 appearance="subtle"
-                icon={<AddRegular fontSize={16} />}
+                type="button"
+                onClick={onMockCommand}
+                title="Preview only — chart view"
+              >
+                <span className="dynamics-cmd-btn__inner">
+                  <DataBarVerticalRegular className="dynamics-cmd-btn__icon" />
+                  <span>Show Chart</span>
+                </span>
+              </Button>
+              <Button
+                appearance="subtle"
+                type="button"
                 onClick={() => onOpenApplication?.()}
                 title="Create a new student via university application"
               >
-                New
+                <span className="dynamics-cmd-btn__inner">
+                  <AddRegular className="dynamics-cmd-btn__icon" />
+                  <span>New</span>
+                </span>
               </Button>
               <Button
                 appearance="subtle"
-                icon={<DeleteRegular fontSize={16} />}
+                type="button"
                 onClick={onMockCommand}
-                title="Preview only — no records deleted"
+                title="Preview only — delete options"
               >
-                Delete
+                <span className="dynamics-cmd-btn__inner">
+                  <DeleteRegular className="dynamics-cmd-btn__icon" />
+                  <span>Delete</span>
+                  <ChevronDownRegular className="dynamics-cmd-btn__chevron" aria-hidden="true" />
+                </span>
               </Button>
-              <Button
-                appearance="subtle"
-                icon={<ArrowClockwiseRegular fontSize={16} />}
-                onClick={onMockCommand}
-                title="Preview only — grid uses static mock data"
-              >
-                Refresh
+              <Button appearance="subtle" type="button" onClick={onMockCommand} title="Preview only — refresh list">
+                <span className="dynamics-cmd-btn__inner">
+                  <ArrowClockwiseRegular className="dynamics-cmd-btn__icon" />
+                  <span>Refresh</span>
+                </span>
+              </Button>
+              <Button appearance="subtle" type="button" onClick={onMockCommand} title="Preview only — Power BI visualize">
+                <span className="dynamics-cmd-btn__inner">
+                  <DataPieRegular className="dynamics-cmd-btn__icon" />
+                  <span>Visualize this view</span>
+                </span>
+              </Button>
+              <Button appearance="subtle" type="button" onClick={onMockCommand} title="Preview only — email link">
+                <span className="dynamics-cmd-btn__inner">
+                  <LinkRegular className="dynamics-cmd-btn__icon" />
+                  <span>Email a Link</span>
+                </span>
+              </Button>
+              <Button appearance="subtle" type="button" onClick={onMockCommand} title="Preview only — Power Automate">
+                <span className="dynamics-cmd-btn__inner">
+                  <FlowRegular className="dynamics-cmd-btn__icon" />
+                  <span>Flow</span>
+                  <ChevronDownRegular className="dynamics-cmd-btn__chevron" aria-hidden="true" />
+                </span>
+              </Button>
+              <Button appearance="subtle" type="button" onClick={onMockCommand} title="Preview only — reporting">
+                <span className="dynamics-cmd-btn__inner">
+                  <DocumentBulletListRegular className="dynamics-cmd-btn__icon" />
+                  <span>Run Report</span>
+                  <ChevronDownRegular className="dynamics-cmd-btn__chevron" aria-hidden="true" />
+                </span>
+              </Button>
+              <Button appearance="subtle" type="button" onClick={onMockCommand} title="Preview only — Excel templates">
+                <span className="dynamics-cmd-btn__inner">
+                  <TableRegular className="dynamics-cmd-btn__icon" />
+                  <span>Excel Templates</span>
+                  <ChevronDownRegular className="dynamics-cmd-btn__chevron" aria-hidden="true" />
+                </span>
+              </Button>
+              <Button appearance="subtle" type="button" onClick={onMockCommand} title="Preview only — export">
+                <span className="dynamics-cmd-btn__inner">
+                  <ArrowExportRegular className="dynamics-cmd-btn__icon" />
+                  <span>Export to Excel</span>
+                  <ChevronDownRegular className="dynamics-cmd-btn__chevron" aria-hidden="true" />
+                </span>
+              </Button>
+              <Button appearance="subtle" type="button" onClick={onMockCommand} title="Preview only — import">
+                <span className="dynamics-cmd-btn__inner">
+                  <ArrowImportRegular className="dynamics-cmd-btn__icon" />
+                  <span>Import from Excel</span>
+                  <ChevronDownRegular className="dynamics-cmd-btn__chevron" aria-hidden="true" />
+                </span>
+              </Button>
+            </div>
+            <div className="dynamics-commandbar__right">
+              <Button appearance="subtle" type="button" onClick={onMockCommand} title="Preview only — sharing">
+                <span className="dynamics-cmd-btn__inner">
+                  <ShareRegular className="dynamics-cmd-btn__icon" />
+                  <span>Share</span>
+                  <ChevronDownRegular className="dynamics-cmd-btn__chevron" aria-hidden="true" />
+                </span>
               </Button>
             </div>
           </div>
@@ -228,10 +312,12 @@ export default function StudentsGrid({ students, onOpenStudent, onOpenApplicatio
                 <h1 className="dynamics-view-title">Active Students</h1>
               </div>
               <div className="dynamics-view-toolbar__controls">
-                <button type="button" className="dynamics-view-toolbar__link">
+                <button type="button" className="dynamics-view-toolbar__link dynamics-view-toolbar__link--icon">
+                  <ColumnTripleEditRegular className="dynamics-view-toolbar__link-icon" aria-hidden="true" />
                   Edit columns
                 </button>
-                <button type="button" className="dynamics-view-toolbar__link">
+                <button type="button" className="dynamics-view-toolbar__link dynamics-view-toolbar__link--icon">
+                  <FilterRegular className="dynamics-view-toolbar__link-icon" aria-hidden="true" />
                   Edit filters
                 </button>
                 <Input
