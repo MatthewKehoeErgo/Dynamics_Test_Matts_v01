@@ -1,0 +1,122 @@
+/* Dynamics 365 / model-driven list view — shell and grid chrome */
+
+.dynamics-shell {
+  min-height: 100vh;
+  background: #faf9f8;
+  color: #323130;
+  font-family:
+    "Segoe UI",
+    "Segoe UI Web (West European)",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Roboto",
+    "Helvetica Neue",
+    sans-serif;
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.dynamics-shell__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 16px 20px 32px;
+}
+
+.dynamics-shell__title-row {
+  margin-bottom: 12px;
+}
+
+.dynamics-shell__title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #323130;
+  letter-spacing: -0.01em;
+}
+
+.dynamics-shell__subtitle {
+  margin: 4px 0 0;
+  font-size: 12px;
+  font-weight: 400;
+  color: #605e5c;
+}
+
+.dynamics-grid-card {
+  background: #ffffff;
+  border: 1px solid #edebe9;
+  border-radius: 2px;
+  box-shadow: none;
+}
+
+.dynamics-grid-card__header {
+  padding: 10px 12px 8px;
+  border-bottom: 1px solid #edebe9;
+  background: #faf9f8;
+}
+
+.dynamics-grid-card__header-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #323130;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.dynamics-grid-scroll {
+  overflow: auto;
+  max-height: min(560px, calc(100vh - 200px));
+}
+
+/* DataGrid uses div layout (noNativeElements); sticky header targets Fluent classes */
+.dynamics-grid-scroll .fui-DataGridHeader {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: #f3f2f1;
+  box-shadow: 0 1px 0 #edebe9;
+}
+
+.dynamics-grid-scroll .fui-DataGridHeader .fui-DataGridHeaderCell,
+.dynamics-grid-scroll .fui-DataGridHeader .fui-DataGridSelectionCell {
+  background: #f3f2f1 !important;
+}
+
+.dynamics-grid-scroll .fui-DataGridBody [role="row"]:hover .fui-DataGridCell,
+.dynamics-grid-scroll .fui-DataGridBody [role="row"]:hover .fui-DataGridSelectionCell {
+  background: #f3f2f1 !important;
+}
+
+/* Status chips — neutral enterprise palette */
+.dynamics-status {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 2px;
+  font-size: 12px;
+  font-weight: 400;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.dynamics-status--draft {
+  background: #f3f2f1;
+  color: #605e5c;
+  border-color: #edebe9;
+}
+
+.dynamics-status--submitted {
+  background: #e8f4fd;
+  color: #004578;
+  border-color: #c7e0f4;
+}
+
+.dynamics-status--accepted {
+  background: #dff6dd;
+  color: #107c10;
+  border-color: #c8e6c9;
+}
+
+.dynamics-status--rejected {
+  background: #fde7e9;
+  color: #a4262c;
+  border-color: #f1bbbc;
+}

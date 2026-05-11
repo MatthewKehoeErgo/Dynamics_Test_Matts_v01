@@ -1,0 +1,62 @@
+/*
+  Runtime tokens — values must stay in sync with design-system.json at repo root.
+*/
+:root {
+  --color-brand-dark-pink: #4f0828;
+  --color-brand-medium-pink: #ab1a4d;
+  --color-brand-bright-pink: #e50f71;
+  --color-brand-blue: #82cfc9;
+  --color-error: #e34b3f;
+  --color-white: #ffffff;
+  --color-dark-grey: #3d3d3d;
+  --color-light-grey: #838383;
+  --color-border-light: #e2e8f0;
+  --color-bg-light: #f0f9f9;
+  --font-primary: "Myriad Pro", sans-serif;
+  --fw-regular: 400;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-black: 900;
+  --fs-xs: 8px;
+  --fs-sm: 13px;
+  --fs-base: 14px;
+  --fs-md: 16px;
+  --fs-lg: 18px;
+  --fs-xl: 20px;
+  --fs-2xl: 24px;
+  --fs-4xl: 40px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-18: 18px;
+  --space-23: 23px;
+  --space-24: 24px;
+  --space-28: 28px;
+  --space-34: 34px;
+  --space-36: 36px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-50: 50px;
+  --space-76: 76px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-full: 9999px;
+  --sidebar-width: 236px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-regular);
+  color: var(--color-dark-grey);
+  background-color: var(--color-white);
+  min-height: 100vh;
+}

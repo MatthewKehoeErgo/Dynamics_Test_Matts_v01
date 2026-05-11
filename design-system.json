@@ -1,0 +1,205 @@
+{
+  "meta": {
+    "name": "Dynamics Test — portal design system",
+    "version": "1.0.0",
+    "description": "Single source of truth for visual and UX tokens. Derived from the SUSI portal reference implementation (SUSIHomePage.css, SUSIHomePage.jsx, MyProfilePage.css) so Dynamics prototypes stay visually aligned.",
+    "sourceFiles": [
+      "../Susi-Portal/SUSIHomePage.css",
+      "../Susi-Portal/SUSIHomePage.jsx",
+      "../Susi-Portal/MyProfilePage.css"
+    ]
+  },
+  "figma": {
+    "fileKey": "mFYpe9vwJP0VDVweAguday",
+    "nodeId": "3703:1056",
+    "note": "Node id uses colon form in API; URLs use hyphen form."
+  },
+  "assets": {
+    "heroBackgroundRemoteUrl": "https://www.figma.com/api/mcp/asset/c051a478-1edc-4765-ae7d-6be25cb061ba",
+    "note": "Used in SUSIHomePage.jsx as heroBgUrl; host locally if MCP asset URLs expire."
+  },
+  "colors": {
+    "brand": {
+      "darkPink": { "hex": "#4f0828", "cssVar": "--color-brand-dark-pink" },
+      "mediumPink": { "hex": "#ab1a4d", "cssVar": "--color-brand-medium-pink" },
+      "brightPink": { "hex": "#e50f71", "cssVar": "--color-brand-bright-pink" },
+      "blue": { "hex": "#82cfc9", "cssVar": "--color-brand-blue" }
+    },
+    "semantic": {
+      "error": { "hex": "#e34b3f", "cssVar": "--color-error" }
+    },
+    "neutral": {
+      "white": { "hex": "#ffffff", "cssVar": "--color-white" },
+      "darkGrey": { "hex": "#3d3d3d", "cssVar": "--color-dark-grey" },
+      "lightGrey": { "hex": "#838383", "cssVar": "--color-light-grey" },
+      "borderLight": { "hex": "#e2e8f0", "cssVar": "--color-border-light" },
+      "bgLight": { "hex": "#f0f9f9", "cssVar": "--color-bg-light" }
+    },
+    "extended": {
+      "black": { "hex": "#000000", "usage": "Nav item hover text and icon filter target (SUSIHomePage.css)" },
+      "nearBlack": { "hex": "#1e1e1e", "usage": "Warning / emphasis text on amber surfaces" },
+      "amber": { "hex": "#ffab00", "usage": "Warning borders and badges" },
+      "warmGrey": { "hex": "#ebeae7", "usage": "Neutral emphasis borders" },
+      "errorTintBorder": { "hex": "#e5a6a1", "usage": "Destructive / error-adjacent borders" },
+      "pillSuccessBg": { "rgba": "rgba(130, 207, 201, 0.35)", "mapsToBrand": "brand.blue" },
+      "pillPendingBg": { "rgba": "rgba(255, 171, 0, 0.25)", "mapsTo": "extended.amber" },
+      "overlayScrim": { "rgba": "rgba(0, 0, 0, 0.3)" },
+      "overlayGradientStart": { "rgba": "rgba(0, 0, 0, 0.6)" },
+      "whiteTranslucent92": { "rgba": "rgba(255, 255, 255, 0.92)" },
+      "shadowBlack12": { "rgba": "rgba(0, 0, 0, 0.12)" },
+      "shadowBrandPink22": { "rgba": "rgba(79, 8, 40, 0.22)" }
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "primary": { "value": "'Myriad Pro', sans-serif", "cssVar": "--font-primary" }
+    },
+    "fontWeight": {
+      "regular": { "value": 400, "cssVar": "--fw-regular" },
+      "semibold": { "value": 600, "cssVar": "--fw-semibold" },
+      "bold": { "value": 700, "cssVar": "--fw-bold" },
+      "black": { "value": 900, "cssVar": "--fw-black" }
+    },
+    "fontSize": {
+      "xs": { "px": 8, "cssVar": "--fs-xs" },
+      "sm": { "px": 13, "cssVar": "--fs-sm" },
+      "base": { "px": 14, "cssVar": "--fs-base" },
+      "md": { "px": 16, "cssVar": "--fs-md" },
+      "lg": { "px": 18, "cssVar": "--fs-lg" },
+      "xl": { "px": 20, "cssVar": "--fs-xl" },
+      "2xl": { "px": 24, "cssVar": "--fs-2xl" },
+      "4xl": { "px": 40, "cssVar": "--fs-4xl" }
+    },
+    "bodyDefault": {
+      "fontSizeToken": "lg",
+      "fontWeightToken": "regular",
+      "colorToken": "neutral.darkGrey"
+    }
+  },
+  "spacing": {
+    "8": { "px": 8, "cssVar": "--space-8" },
+    "10": { "px": 10, "cssVar": "--space-10" },
+    "12": { "px": 12, "cssVar": "--space-12" },
+    "16": { "px": 16, "cssVar": "--space-16" },
+    "18": { "px": 18, "cssVar": "--space-18" },
+    "23": { "px": 23, "cssVar": "--space-23" },
+    "24": { "px": 24, "cssVar": "--space-24" },
+    "28": { "px": 28, "cssVar": "--space-28" },
+    "34": { "px": 34, "cssVar": "--space-34" },
+    "36": { "px": 36, "cssVar": "--space-36" },
+    "40": { "px": 40, "cssVar": "--space-40" },
+    "48": { "px": 48, "cssVar": "--space-48" },
+    "50": { "px": 50, "cssVar": "--space-50" },
+    "76": { "px": 76, "cssVar": "--space-76" }
+  },
+  "radius": {
+    "sm": { "px": 8, "cssVar": "--radius-sm" },
+    "md": { "px": 16, "cssVar": "--radius-md" },
+    "full": { "px": 9999, "cssVar": "--radius-full" }
+  },
+  "layout": {
+    "sidebarWidth": { "px": 236, "cssVar": "--sidebar-width" },
+    "contentMaxWidthExamples": {
+      "profileLede": "54rem",
+      "profileCardIntro": "42rem"
+    }
+  },
+  "breakpoints": {
+    "px": {
+      "profileSummaryTwoColumn": 720,
+      "profileDlStack": 640
+    }
+  },
+  "elevation": {
+    "cardShadow": "0 4px 12px rgba(79, 8, 40, 0.22)",
+    "popoverShadow": "0 4px 14px rgba(0, 0, 0, 0.12)",
+    "liftShadow": "0 12px 24px rgba(0, 0, 0, 0.12)"
+  },
+  "motion": {
+    "interactionDurationMs": 150,
+    "easingDefault": "ease",
+    "commonTransition": "background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease"
+  },
+  "focus": {
+    "ringWidthPx": 2,
+    "ringColorCssVar": "--color-brand-medium-pink",
+    "ringOffsetPx": 2
+  },
+  "components": {
+    "navIcon": { "widthPx": 20, "heightPx": 20 },
+    "headerLogo": { "heightPx": 65 },
+    "profileAvatar": { "widthPx": 48, "heightPx": 48 },
+    "primaryButton": {
+      "background": "colors.brand.mediumPink",
+      "backgroundHover": "colors.brand.darkPink",
+      "text": "colors.neutral.white"
+    },
+    "secondaryButton": {
+      "borderWidthPx": 2,
+      "border": "colors.brand.mediumPink",
+      "background": "colors.neutral.white",
+      "text": "colors.brand.mediumPink",
+      "backgroundHover": "colors.neutral.bgLight"
+    },
+    "statusPill": {
+      "success": {
+        "background": "colors.extended.pillSuccessBg",
+        "text": "colors.brand.darkPink"
+      },
+      "pending": {
+        "background": "colors.extended.pillPendingBg",
+        "text": "colors.extended.nearBlack"
+      },
+      "muted": {
+        "background": "colors.neutral.bgLight",
+        "text": "colors.neutral.lightGrey"
+      }
+    }
+  },
+  "contentModel": {
+    "navigation": {
+      "itemIds": ["current", "history", "appeals", "payments", "profile", "help"],
+      "labels": [
+        "Current Application",
+        "Application History",
+        "Appeals",
+        "Payments",
+        "My Profile",
+        "Help & Support"
+      ],
+      "hashRoutes": {
+        "profile": "#profile",
+        "current": "#",
+        "defaultPattern": "#{itemId}"
+      }
+    },
+    "importantDates": {
+      "fields": ["id", "label", "date"],
+      "exampleIds": [
+        "renewal-open",
+        "new-open",
+        "priority-renew",
+        "priority-new",
+        "final-close"
+      ]
+    },
+    "applicationSections": {
+      "fields": [
+        "id",
+        "section",
+        "progress",
+        "title",
+        "items",
+        "verified",
+        "action",
+        "warningBorder",
+        "actionRequired"
+      ],
+      "optionalFlags": ["warningBorder", "actionRequired"]
+    },
+    "supportPhone": {
+      "display": "0818 888 777",
+      "telHref": "tel:0818888777"
+    }
+  }
+}
