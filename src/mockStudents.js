@@ -7,6 +7,7 @@ export const mockStudents = [
     fullName: "Jordan Williams",
     email: "jordan.williams@studentmail.edu",
     status: "Submitted",
+    ownerName: "Neil Smith",
     createdOn: new Date("2026-01-15T09:30:00.000Z"),
   },
   {
@@ -14,6 +15,7 @@ export const mockStudents = [
     fullName: "Samira Okonkwo",
     email: "s.okonkwo@studentmail.edu",
     status: "Accepted",
+    ownerName: "Frank Brooks",
     createdOn: new Date("2026-02-02T11:05:00.000Z"),
   },
   {
@@ -21,6 +23,7 @@ export const mockStudents = [
     fullName: "Liam Chen",
     email: "liam.chen@studentmail.edu",
     status: "Draft",
+    ownerName: "Neil Smith",
     createdOn: new Date("2026-02-18T16:42:00.000Z"),
   },
   {
@@ -28,6 +31,7 @@ export const mockStudents = [
     fullName: "Priya Desai",
     email: "priya.desai@studentmail.edu",
     status: "Submitted",
+    ownerName: "Frank Brooks",
     createdOn: new Date("2026-03-01T08:12:00.000Z"),
   },
   {
@@ -35,6 +39,7 @@ export const mockStudents = [
     fullName: "Noah Bergström",
     email: "n.bergstrom@studentmail.edu",
     status: "Rejected",
+    ownerName: "Neil Smith",
     createdOn: new Date("2026-03-04T13:20:00.000Z"),
   },
   {
@@ -42,6 +47,7 @@ export const mockStudents = [
     fullName: "Emily Foster",
     email: "emily.foster@studentmail.edu",
     status: "Submitted",
+    ownerName: "Frank Brooks",
     createdOn: new Date("2026-03-09T10:00:00.000Z"),
   },
   {
@@ -49,6 +55,7 @@ export const mockStudents = [
     fullName: "Marcus Webb",
     email: "marcus.webb@studentmail.edu",
     status: "Accepted",
+    ownerName: "Neil Smith",
     createdOn: new Date("2026-03-10T15:33:00.000Z"),
   },
   {
@@ -56,6 +63,7 @@ export const mockStudents = [
     fullName: "Aisha Rahman",
     email: "aisha.rahman@studentmail.edu",
     status: "Draft",
+    ownerName: "Frank Brooks",
     createdOn: new Date("2026-03-11T09:15:00.000Z"),
   },
 ];
