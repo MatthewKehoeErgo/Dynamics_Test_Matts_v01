@@ -1,144 +1,350 @@
-/* Dynamics-style main form — aligned with Student Detail treatment */
+/* Model-driven app — New Student record form (General tab + Timeline) */
 
-.uni-app {
+.mda-new-record.dynamics-app {
   min-height: 100vh;
+}
+
+.mda-new-record .dynamics-main {
+  overflow: hidden;
+}
+
+.mda-record-main {
   display: flex;
   flex-direction: column;
-  background: #faf9f8;
-  color: #323130;
-  font-family:
-    "Segoe UI",
-    "Segoe UI Web (West European)",
-    -apple-system,
-    BlinkMacSystemFont,
-    sans-serif;
-  font-size: 14px;
-  line-height: 1.4;
+  min-height: 0;
+  flex: 1;
+  min-width: 0;
 }
 
-.uni-app__chrome {
-  flex-shrink: 0;
-  background: #ffffff;
-  border-bottom: 1px solid #edebe9;
-}
-
-.uni-app__chrome-inner {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 12px 24px 20px;
-}
-
-.uni-app__toolbar {
+/* Command bar — white strip under chrome (Save, Save & Close, …) */
+.mda-record-commandbar {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 2px 4px;
+  padding: 4px 12px;
+  background: #ffffff;
+  border-bottom: 1px solid #edebe9;
+  flex-shrink: 0;
 }
 
-.uni-app__badge {
-  font-size: 13px;
-  font-weight: 600;
-  color: #605e5c;
-}
-
-.uni-app__title {
-  margin: 0;
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+.mda-record-commandbar .fui-Button {
+  min-height: 30px;
+  font-size: 12px;
+  font-weight: 400;
   color: #323130;
 }
 
-.uni-app__lede {
-  margin: 8px 0 0;
-  font-size: 12px;
-  color: #605e5c;
-  max-width: 42rem;
+.mda-record-commandbar .fui-Button:hover {
+  background: #f3f2f1 !important;
 }
 
-.uni-app__main {
+.mda-record-commandbar__spacer {
   flex: 1;
-  padding: 20px 24px 48px;
+  min-width: 8px;
 }
 
-.uni-app__form {
-  max-width: 720px;
+/* Scrollable workspace */
+.mda-record-workspace {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 0 16px 24px;
+  background: #faf9f8;
+}
+
+.mda-record-form {
+  max-width: 1400px;
   margin: 0 auto;
 }
 
-.uni-app__card {
-  padding: 20px 24px 28px;
+.mda-record-card {
+  margin-top: 12px;
   background: #ffffff;
   border: 1px solid #edebe9;
   border-radius: 2px;
+  min-height: 320px;
 }
 
-.uni-app__section {
-  padding-top: 4px;
+/* Record header — ID · status · entity */
+.mda-record-header {
+  padding: 12px 16px 0;
+  border-bottom: 1px solid transparent;
 }
 
-.uni-app__section-heading {
-  margin: 0 0 16px;
-  padding-bottom: 8px;
-  border-bottom: 2px solid #0078d4;
-  display: inline-block;
-  font-size: 14px;
+.mda-record-header__row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.mda-record-header__id {
   font-weight: 700;
   color: #323130;
 }
 
-.uni-app__fields {
+.mda-record-header__divider-dot {
+  color: #a19f9d;
+  font-weight: 600;
+}
+
+.mda-record-header__status {
+  color: #605e5c;
+}
+
+.mda-record-header__entity {
+  font-weight: 600;
+  color: #323130;
+}
+
+/* Tabs — General | Related */
+.mda-tabs {
+  display: flex;
+  gap: 0;
+  padding: 0 16px;
+  border-bottom: 1px solid #edebe9;
+  margin-top: 8px;
+}
+
+.mda-tab {
+  position: relative;
+  padding: 10px 16px 12px;
+  margin: 0;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: #605e5c;
+  cursor: pointer;
+}
+
+.mda-tab:hover {
+  color: #323130;
+  background: #faf9f8;
+}
+
+.mda-tab--active {
+  color: #0078d4;
+}
+
+.mda-tab--active::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 0;
+  height: 2px;
+  background: #0078d4;
+}
+
+/* Three-column area: two field columns + Timeline */
+.mda-form-layout {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px 24px;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 0;
+  align-items: stretch;
+}
+
+@media (max-width: 1100px) {
+  .mda-form-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .mda-timeline {
+    border-left: none !important;
+    border-top: 1px solid #edebe9;
+  }
+}
+
+.mda-form-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 32px;
+  padding: 16px 16px 24px;
   align-items: start;
 }
 
-.uni-app__fields--single {
-  grid-template-columns: 1fr;
+@media (max-width: 720px) {
+  .mda-form-columns {
+    grid-template-columns: 1fr;
+  }
 }
 
-.uni-app__checkbox-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 4px 0;
+.mda-form-col {
+  min-width: 0;
 }
 
-.uni-app__select {
+/* Label left of control (model-driven standard) */
+.mda-field-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 160px) minmax(0, 1fr);
+  gap: 10px 16px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.mda-field-row--top {
+  align-items: start;
+}
+
+.mda-field-row--top .mda-field-label {
+  padding-top: 8px;
+}
+
+.mda-field-row--error .mda-input,
+.mda-field-row--error .mda-select {
+  border-color: #a4262c;
+}
+
+.mda-field-label {
+  font-size: 12px;
+  font-weight: 400;
+  color: #323130;
+  text-align: right;
+  line-height: 1.3;
+}
+
+.mda-field-req {
+  color: #a4262c;
+}
+
+.mda-field-control {
+  min-width: 0;
+}
+
+.mda-field-error {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  color: #a4262c;
+}
+
+.mda-input.fui-Input,
+.mda-input {
   width: 100%;
   max-width: 100%;
+}
+
+/* Fluent Input inherits — tighten to Dynamics density */
+.mda-new-record .mda-field-control .fui-Input {
+  font-size: 14px;
+  min-height: 32px;
+  background-color: #faf9f8;
+  border-color: #605e5c;
+}
+
+.mda-new-record .mda-field-control .fui-Input:hover {
+  border-color: #323130;
+}
+
+.mda-select {
+  width: 100%;
   box-sizing: border-box;
   min-height: 32px;
   padding: 0 10px;
   font-size: 14px;
   font-family: inherit;
   color: #323130;
-  background: #ffffff;
+  background: #faf9f8;
   border: 1px solid #605e5c;
   border-radius: 4px;
 }
 
-.uni-app__select:focus {
+.mda-select:focus {
   outline: 2px solid #0078d4;
   outline-offset: -1px;
 }
 
-.uni-app__actions {
+.mda-checkbox-stack {
   display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 28px;
-  padding-top: 16px;
-  border-top: 1px solid #edebe9;
+  flex-direction: column;
+  gap: 8px;
+  padding: 4px 0;
 }
 
-.uni-app .fui-Field__label {
-  font-weight: 600;
+.mda-checkbox-stack .fui-Checkbox {
+  font-size: 13px;
+}
+
+/* Timeline (right pane) */
+.mda-timeline {
+  border-left: 1px solid #edebe9;
+  padding: 12px 12px 16px;
+  background: #faf9f8;
+}
+
+.mda-timeline__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.mda-timeline__title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #323130;
+}
+
+.mda-timeline__actions {
+  display: flex;
+  gap: 2px;
+}
+
+.mda-timeline__search.fui-Input {
+  width: 100%;
+  margin-bottom: 10px;
   font-size: 12px;
 }
 
-.uni-app .fui-Input {
-  font-size: 14px;
+.mda-timeline__note {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  font-size: 13px;
+  font-family: inherit;
+  border: 1px solid #edebe9;
+  border-radius: 4px;
+  resize: vertical;
+  margin-bottom: 12px;
+  background: #ffffff;
+  color: #605e5c;
+}
+
+.mda-timeline__empty {
+  margin: 0;
+  font-size: 12px;
+  color: #605e5c;
+  line-height: 1.45;
+}
+
+/* Related tab */
+.mda-related-placeholder {
+  padding: 24px 16px 32px;
+}
+
+.mda-related-placeholder__text {
+  margin: 0;
+  font-size: 13px;
+  color: #605e5c;
+  max-width: 36rem;
+  line-height: 1.5;
+}
+
+/* Sitemap group labels */
+.mda-sitemap .mda-sitemap__group-label {
+  margin: 12px 16px 6px;
+  padding: 0;
+  font-size: 11px;
+  font-weight: 700;
+  color: #605e5c;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.mda-sitemap.mda-sitemap {
+  width: 240px;
 }
