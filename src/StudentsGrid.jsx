@@ -205,8 +205,10 @@ export default function StudentsGrid({ students, onOpenStudent, onOpenApplicatio
         </nav>
 
         <main className="dynamics-main">
-          <div className="dynamics-commandbar" role="toolbar" aria-label="Commands">
-            <div className="dynamics-commandbar__scroll">
+          <div className="dynamics-main-surface">
+            <div className="dynamics-surface-card dynamics-surface-card--command">
+              <div className="dynamics-commandbar" role="toolbar" aria-label="Commands">
+                <div className="dynamics-commandbar__scroll">
               <Button
                 appearance="subtle"
                 type="button"
@@ -294,91 +296,95 @@ export default function StudentsGrid({ students, onOpenStudent, onOpenApplicatio
                   <ChevronDownRegular className="dynamics-cmd-btn__chevron" aria-hidden="true" />
                 </span>
               </Button>
-            </div>
-            <div className="dynamics-commandbar__right">
-              <Button appearance="subtle" type="button" onClick={onMockCommand} title="Preview only — sharing">
-                <span className="dynamics-cmd-btn__inner">
-                  <ShareRegular className="dynamics-cmd-btn__icon" />
-                  <span>Share</span>
-                  <ChevronDownRegular className="dynamics-cmd-btn__chevron" aria-hidden="true" />
-                </span>
-              </Button>
-            </div>
-          </div>
-
-          <section className="dynamics-view" aria-label="Students view">
-            <div className="dynamics-view-toolbar">
-              <div className="dynamics-view-toolbar__title-wrap">
-                <h1 className="dynamics-view-title">Active Students</h1>
-              </div>
-              <div className="dynamics-view-toolbar__controls">
-                <button type="button" className="dynamics-view-toolbar__link dynamics-view-toolbar__link--icon">
-                  <ColumnTripleEditRegular className="dynamics-view-toolbar__link-icon" aria-hidden="true" />
-                  Edit columns
-                </button>
-                <button type="button" className="dynamics-view-toolbar__link dynamics-view-toolbar__link--icon">
-                  <FilterRegular className="dynamics-view-toolbar__link-icon" aria-hidden="true" />
-                  Edit filters
-                </button>
-                <Input
-                  className="dynamics-keyword-search"
-                  placeholder="Filter by keyword"
-                  value={filter}
-                  onChange={(_, d) => setFilter(d.value)}
-                  contentBefore={<SearchRegular className="dynamics-keyword-search__icon" />}
-                  aria-label="Filter by keyword"
-                />
-              </div>
-            </div>
-
-            <div className="dynamics-grid-card">
-              <div className="dynamics-grid-scroll dynamics-grid-scroll--list">
-                <div className="dynamics-grid-scroll__inner">
-                  <DataGrid
-                    items={filteredItems}
-                    columns={columns}
-                    sortable
-                    defaultSortState={{ sortColumn: "createdOn", sortDirection: "descending" }}
-                    resizableColumns
-                    columnSizingOptions={columnSizingOptions}
-                    resizableColumnsOptions={{ autoFitColumns: false }}
-                    selectionMode="multiselect"
-                    selectionAppearance="neutral"
-                    subtleSelection
-                    size="small"
-                    getRowId={(item) => item.studentId}
-                    focusMode="composite"
-                    aria-label="Students — sortable, resizable columns"
-                  >
-                    <DataGridHeader>
-                      <DataGridRow selectionCell={{ "aria-label": "Select all rows" }}>
-                        {({ renderHeaderCell }) => (
-                          <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
-                        )}
-                      </DataGridRow>
-                    </DataGridHeader>
-                    <DataGridBody>
-                      {({ item, rowId }) => (
-                        <DataGridRow
-                          key={rowId}
-                          selectionCell={{ "aria-label": "Select row" }}
-                          onDoubleClick={(e) => {
-                            e.preventDefault();
-                            onOpenStudent?.(item.studentId);
-                          }}
-                        >
-                          {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
-                        </DataGridRow>
-                      )}
-                    </DataGridBody>
-                  </DataGrid>
-                  <footer className="dynamics-grid-footer">
-                    Rows: {filteredItems.length}
-                  </footer>
+                </div>
+                <div className="dynamics-commandbar__right">
+                  <Button appearance="subtle" type="button" onClick={onMockCommand} title="Preview only — sharing">
+                    <span className="dynamics-cmd-btn__inner">
+                      <ShareRegular className="dynamics-cmd-btn__icon" />
+                      <span>Share</span>
+                      <ChevronDownRegular className="dynamics-cmd-btn__chevron" aria-hidden="true" />
+                    </span>
+                  </Button>
                 </div>
               </div>
             </div>
-          </section>
+
+            <div className="dynamics-surface-card dynamics-surface-card--view">
+              <section className="dynamics-view" aria-label="Students view">
+                <div className="dynamics-view-toolbar">
+                  <div className="dynamics-view-toolbar__title-wrap">
+                    <h1 className="dynamics-view-title">Active Students</h1>
+                  </div>
+                  <div className="dynamics-view-toolbar__controls">
+                    <button type="button" className="dynamics-view-toolbar__link dynamics-view-toolbar__link--icon">
+                      <ColumnTripleEditRegular className="dynamics-view-toolbar__link-icon" aria-hidden="true" />
+                      Edit columns
+                    </button>
+                    <button type="button" className="dynamics-view-toolbar__link dynamics-view-toolbar__link--icon">
+                      <FilterRegular className="dynamics-view-toolbar__link-icon" aria-hidden="true" />
+                      Edit filters
+                    </button>
+                    <Input
+                      className="dynamics-keyword-search"
+                      placeholder="Filter by keyword"
+                      value={filter}
+                      onChange={(_, d) => setFilter(d.value)}
+                      contentBefore={<SearchRegular className="dynamics-keyword-search__icon" />}
+                      aria-label="Filter by keyword"
+                    />
+                  </div>
+                </div>
+
+                <div className="dynamics-grid-card">
+                  <div className="dynamics-grid-scroll dynamics-grid-scroll--list">
+                    <div className="dynamics-grid-scroll__inner">
+                      <DataGrid
+                        items={filteredItems}
+                        columns={columns}
+                        sortable
+                        defaultSortState={{ sortColumn: "createdOn", sortDirection: "descending" }}
+                        resizableColumns
+                        columnSizingOptions={columnSizingOptions}
+                        resizableColumnsOptions={{ autoFitColumns: false }}
+                        selectionMode="multiselect"
+                        selectionAppearance="neutral"
+                        subtleSelection
+                        size="small"
+                        getRowId={(item) => item.studentId}
+                        focusMode="composite"
+                        aria-label="Students — sortable, resizable columns"
+                      >
+                        <DataGridHeader>
+                          <DataGridRow selectionCell={{ "aria-label": "Select all rows" }}>
+                            {({ renderHeaderCell }) => (
+                              <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
+                            )}
+                          </DataGridRow>
+                        </DataGridHeader>
+                        <DataGridBody>
+                          {({ item, rowId }) => (
+                            <DataGridRow
+                              key={rowId}
+                              selectionCell={{ "aria-label": "Select row" }}
+                              onDoubleClick={(e) => {
+                                e.preventDefault();
+                                onOpenStudent?.(item.studentId);
+                              }}
+                            >
+                              {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
+                            </DataGridRow>
+                          )}
+                        </DataGridBody>
+                      </DataGrid>
+                      <footer className="dynamics-grid-footer">
+                        Rows: {filteredItems.length}
+                      </footer>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
         </main>
       </div>
     </div>

@@ -168,13 +168,49 @@
   flex-shrink: 0;
 }
 
-/* --- Main column --- */
+/* --- Main column — canvas matches model-driven list (#f3f2f1) --- */
 .dynamics-main {
   flex: 1;
   min-width: 0;
+  min-height: 0;
   display: flex;
   flex-direction: column;
-  background: #faf9f8;
+  background: #f3f2f1;
+}
+
+/* Grey workspace with inset cards (Dynamics screenshot) */
+.dynamics-main-surface {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 20px;
+  background: #f3f2f1;
+  overflow: auto;
+}
+
+/* Shared white “card” shell */
+.dynamics-surface-card {
+  background: #ffffff;
+  border-radius: 4px;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.06),
+    0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.dynamics-surface-card--command {
+  flex-shrink: 0;
+  padding: 8px 12px 8px 10px;
+}
+
+/* Bottom card height follows toolbar + grid — does not stretch to fill the viewport */
+.dynamics-surface-card--view {
+  flex: 0 0 auto;
+  align-self: stretch;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Command bar — list view actions (Dynamics ribbon-style) */
@@ -183,9 +219,9 @@
   align-items: stretch;
   justify-content: space-between;
   gap: 8px;
-  padding: 2px 8px 2px 4px;
-  background: #ffffff;
-  border-bottom: 1px solid #edebe9;
+  padding: 0;
+  background: transparent;
+  border: none;
   flex-shrink: 0;
 }
 
@@ -256,13 +292,11 @@
   color: #0078d4;
 }
 
-/* --- View region --- */
+/* --- View region (inside bottom white card) --- */
 .dynamics-view {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 0;
-  padding: 12px 16px 16px;
+  padding: 0;
 }
 
 /* Toolbar: title + filters row */
@@ -272,7 +306,9 @@
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 10px;
+  flex-shrink: 0;
+  padding: 16px 20px 12px;
+  margin-bottom: 0;
 }
 
 .dynamics-view-toolbar__title-wrap {
@@ -327,27 +363,24 @@
   font-size: 16px;
 }
 
-/* --- Grid card --- */
+/* --- Grid region (same white card as toolbar; no second white box) --- */
 .dynamics-grid-card {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 0;
   min-width: 0;
-  background: #ffffff;
-  border: 1px solid #edebe9;
-  border-radius: 2px;
+  padding: 0 20px 16px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
 }
 
-/* Scroll region: grid + sticky row-count footer at bottom of viewport */
+/* Scroll region: grows with row count up to max-height, then scrolls — keeps card compact for short lists */
 .dynamics-grid-scroll {
   width: 100%;
   min-width: 0;
   overflow-x: auto;
   overflow-y: auto;
-  flex: 1;
-  min-height: 200px;
-  max-height: min(520px, calc(100vh - 280px));
+  max-height: min(520px, calc(100vh - 320px));
   -webkit-overflow-scrolling: touch;
 }
 
@@ -388,27 +421,37 @@
   white-space: nowrap;
 }
 
-/* DataGrid: sticky header, horizontal rules only (no vertical grid lines) */
+/* DataGrid: sticky header — white like Dynamics list; horizontal rule only under header row (no vertical lines between headings) */
 .dynamics-grid-scroll--list .fui-DataGridHeader {
   position: sticky;
   top: 0;
   z-index: 3;
-  background: #faf9f8 !important;
-  box-shadow: inset 0 -1px 0 #edebe9;
+  background: #ffffff !important;
+  box-shadow: inset 0 -1px 0 #e0e0e0;
 }
 
 .dynamics-grid-scroll--list .fui-DataGridHeader .fui-DataGridHeaderCell,
 .dynamics-grid-scroll--list .fui-DataGridHeader .fui-DataGridSelectionCell {
-  background: #faf9f8 !important;
-  border-inline: none !important;
+  background: #ffffff !important;
+  border: none !important;
+  border-inline-start: none !important;
+  border-inline-end: none !important;
   border-block-start: none !important;
-  border-block-end: 1px solid #edebe9 !important;
+  border-block-end: 1px solid #e0e0e0 !important;
   box-shadow: none !important;
   font-size: 11px;
   font-weight: 600;
   color: #605e5c;
   text-transform: uppercase;
   letter-spacing: 0.02em;
+}
+
+/* Fluent sometimes draws column seams on inner table primitives — strip vertical borders in header row only */
+.dynamics-grid-scroll--list .fui-DataGridHeader .fui-TableCell,
+.dynamics-grid-scroll--list .fui-DataGridHeader [role="columnheader"] {
+  border-inline-start: none !important;
+  border-inline-end: none !important;
+  box-shadow: none !important;
 }
 
 .dynamics-grid-scroll--list .fui-DataGridBody [role="row"] .fui-DataGridCell,
