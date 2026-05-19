@@ -36,9 +36,6 @@ jobs:
         env:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
-          VITE_SUPABASE_COMMENTS_TABLE: ${{ secrets.VITE_SUPABASE_COMMENTS_TABLE }}
-          VITE_SUPABASE_SESSIONS_TABLE: ${{ secrets.VITE_SUPABASE_SESSIONS_TABLE }}
-          VITE_SUPABASE_PREVIEW_BUCKET: ${{ secrets.VITE_SUPABASE_PREVIEW_BUCKET }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
