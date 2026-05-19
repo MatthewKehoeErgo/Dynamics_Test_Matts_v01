@@ -1,5 +1,5 @@
-import { FluentProvider, webLightTheme } from "@fluentui/react-components";
 import { useCallback, useMemo, useState } from "react";
+import ReviewModePageBridge from "./review-mode/ReviewModePageBridge.jsx";
 import CourseDetailView from "./CourseDetailView.jsx";
 import CoursesGrid from "./CoursesGrid.jsx";
 import DepartmentDetailView from "./DepartmentDetailView.jsx";
@@ -162,8 +162,20 @@ export default function App() {
     []
   );
 
+  const pageCtx = useMemo(
+    () => ({
+      students,
+      staff,
+      departments,
+      institutionCourses,
+      lecturersEnriched,
+    }),
+    [students, staff, departments, institutionCourses, lecturersEnriched]
+  );
+
   return (
-    <FluentProvider theme={webLightTheme}>
+    <>
+      <ReviewModePageBridge view={view} setView={setView} ctx={pageCtx} />
       {view.type === "application" ? (
         <UniversityApplicationForm
           existingStudents={students}
@@ -350,6 +362,6 @@ export default function App() {
           onToggleSitemap={toggleSitemap}
         />
       )}
-    </FluentProvider>
+    </>
   );
 }

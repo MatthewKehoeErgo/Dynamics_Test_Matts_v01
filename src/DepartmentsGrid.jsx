@@ -294,7 +294,7 @@ export default function DepartmentsGrid({
         </nav>
 
         <main className="dynamics-main">
-          <div className="dynamics-main-surface">
+          <div className="dynamics-main-surface" data-review-mode-scroll-root>
             <div className="dynamics-surface-card dynamics-surface-card--command">
               <div className="dynamics-commandbar" role="toolbar" aria-label="Commands">
                 <div className="dynamics-commandbar__scroll">

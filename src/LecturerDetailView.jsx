@@ -314,7 +314,7 @@ export default function LecturerDetailView({
             </FluentButton>
           </div>
 
-          <div className="mda-record-workspace">
+          <div className="mda-record-workspace" data-review-mode-scroll-root>
             <div className="mda-record-form mda-detail-page-layout">
               <section className="mda-record-card mda-record-card--summary-band" aria-labelledby="mda-lecturer-detail-card-title">
                 <header className="mda-record-header mda-record-header--detail">
