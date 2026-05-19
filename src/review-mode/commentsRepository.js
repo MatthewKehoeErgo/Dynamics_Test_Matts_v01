@@ -1,5 +1,17 @@
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL?.replace(/\/$/, "");
-const ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
+/** Strip accidental "KEY=value" paste from GitHub Secrets or .env lines. */
+function normalizeViteEnv(raw, key) {
+  if (raw == null || raw === "") return "";
+  let value = String(raw).trim();
+  const prefix = `${key}=`;
+  if (value.startsWith(prefix)) value = value.slice(prefix.length).trim();
+  return value;
+}
+
+const SUPABASE_URL = normalizeViteEnv(import.meta.env.VITE_SUPABASE_URL, "VITE_SUPABASE_URL").replace(
+  /\/$/,
+  ""
+);
+const ANON_KEY = normalizeViteEnv(import.meta.env.VITE_SUPABASE_ANON_KEY, "VITE_SUPABASE_ANON_KEY");
 const COMMENTS_TABLE = import.meta.env.VITE_SUPABASE_COMMENTS_TABLE || "Comments";
 const SESSIONS_TABLE = import.meta.env.VITE_SUPABASE_SESSIONS_TABLE || "Sessions";
 const PREVIEW_BUCKET = import.meta.env.VITE_SUPABASE_PREVIEW_BUCKET || "comment-previews";
@@ -92,6 +104,11 @@ function buildPayload(fields, includeAuthor = true) {
 async function request(path, options = {}) {
   if (!SUPABASE_URL || !ANON_KEY) {
     throw new Error("Supabase is not configured. Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to .env.local");
+  }
+  if (!/^https?:\/\//i.test(SUPABASE_URL)) {
+    throw new Error(
+      "Invalid VITE_SUPABASE_URL. Use only the URL (e.g. https://xxx.supabase.co), not a full .env line."
+    );
   }
   const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, options);
   if (!res.ok) {

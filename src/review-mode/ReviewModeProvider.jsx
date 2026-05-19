@@ -219,7 +219,11 @@ export default function ReviewModeProvider({
             ? "Supabase blocked this save. Run supabase/rls_policies.sql in the SQL Editor (anon insert policy on Comments)."
             : err?.message?.includes("JWT") || err?.message?.includes("401")
               ? "Supabase API key rejected. Check VITE_SUPABASE_ANON_KEY in .env.local and restart npm run dev."
-              : `Could not save comment: ${err?.message || "Unknown error"}`;
+              : err?.message?.includes("405") || err?.message?.includes("Not Allowed")
+                ? "Comment save reached GitHub Pages instead of Supabase. Fix GitHub Actions secrets: value must be only the URL or key, not VITE_SUPABASE_URL=..."
+                : err?.message?.includes("Invalid VITE_SUPABASE_URL")
+                  ? err.message
+                  : `Could not save comment: ${err?.message || "Unknown error"}`;
         window.alert(msg);
       } finally {
         setSaving(false);
